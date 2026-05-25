@@ -1,36 +1,34 @@
-# Project Implementation Plan: Vhouse
+# Project Task: Vhouse Database & Storage Setup
 
-## Deskripsi
-Proyek ini adalah pembuatan aplikasi web baru menggunakan framework Laravel. Dokumen ini berisi instruksi tingkat tinggi (high-level) untuk diimplementasikan oleh programmer atau AI agent selanjutnya.
+## Overview
+Proyek ini membutuhkan setup awal untuk database dan storage. Tugas ini ditujukan untuk developer selanjutnya.
 
-## Spesifikasi Teknis
-- **Framework Utama:** Laravel 13
-- **Database:** MySQL
-- **Nama Database:** `vhouse`
-- **Autentikasi:** Laravel Breeze
-- **Tampilan (UI):** Blade Templates + Tailwind CSS
+## Tasks
 
-## Langkah-langkah Implementasi
+### 1. Database Migration - Product Table
+Buat migration beserta model untuk tabel `products` dengan kolom-kolom berikut:
+- `id`
+- `name` (varchar)
+- `price` (integer)
+- `stock` (integer)
+- `image` (text)
+- `lt` (integer)
+- `lb` (integer)
+- `flors` (integer)
+- `badroom` (integer)
+- `bathrom` (integer)
+- `garage` (integer)
 
-1. **Inisialisasi Proyek**
-   - Buat proyek Laravel 13 baru di dalam folder saat ini (repository ini).
-   - Pastikan struktur dasar folder dan file Laravel sudah terbentuk dengan benar.
+### 2. Database Migration - Gallery Table
+Buat migration beserta model untuk tabel `galeries` dengan kolom-kolom berikut:
+- `id`
+- `product_id` (integer, foreign key ke tabel products)
+- `image` (text)
 
-2. **Konfigurasi Database**
-   - Konfigurasi server MySQL Anda (baik itu secara lokal atau menggunakan Docker).
-   - Buat database MySQL baru dengan nama `vhouse`.
-   - Sesuaikan konfigurasi koneksi database di file `.env` (DB_CONNECTION, DB_DATABASE, dll).
-   - Jalankan proses migrasi awal bawaan Laravel.
+### 3. Storage Configuration
+- Hubungkan local storage dengan folder public (buat symlink) agar file gambar yang diupload nantinya bisa diakses secara publik.
 
-3. **Instalasi & Konfigurasi Autentikasi**
-   - Instal package Laravel Breeze sebagai starter kit autentikasi.
-   - Lakukan instalasi scaffold Breeze menggunakan stack standar yaitu Blade dengan Tailwind CSS.
-   - Jalankan instalasi dependensi NPM dan lakukan kompilasi aset frontend.
-   - Pastikan fitur auth (login, register, forgot password) bawaan Breeze sudah ter-generate.
-
-4. **Verifikasi**
-   - Jalankan development server lokal.
-   - Lakukan pengujian alur registrasi akun baru dan login untuk memastikan integrasi database dan frontend (Tailwind) sudah berfungsi sempurna.
-
----
-*Catatan untuk implementator:* Implementasikan instruksi di atas sesuai standar best practice Laravel. Jangan terlalu rumit, cukup penuhi pondasi awal proyek ini untuk milestone pertama.
+## Notes
+- Cukup buat struktur dasarnya saja.
+- Pastikan migration berjalan dengan baik.
+- Terapkan relasi dasar antara Product dan Galery di dalam model masing-masing jika diperlukan.
