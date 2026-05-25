@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Product;
 use App\Models\Galery;
 use Illuminate\Support\Facades\Storage;
@@ -31,42 +32,9 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|integer|min:0',
-            'stock' => 'required|integer|min:0',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'lt' => 'required|integer|min:0',
-            'lb' => 'required|integer|min:0',
-            'flors' => 'required|integer|min:0',
-            'badroom' => 'required|integer|min:0',
-            'bathrom' => 'required|integer|min:0',
-            'garage' => 'required|integer|min:0',
-            'galeries' => [
-                'nullable',
-                'array',
-                'max:6',
-                function ($attribute, $value, $fail) use ($request) {
-                    $totalSize = 0;
-                    if ($request->hasFile('image')) {
-                        $totalSize += $request->file('image')->getSize();
-                    }
-                    if ($request->file('galeries')) {
-                        foreach ($request->file('galeries') as $file) {
-                            if ($file instanceof \Illuminate\Http\UploadedFile) {
-                                $totalSize += $file->getSize();
-                            }
-                        }
-                    }
-                    if ($totalSize > 5242880) {
-                        $fail('Total ukuran seluruh gambar (gambar utama & galeri) tidak boleh melebihi 5MB.');
-                    }
-                }
-            ],
-            'galeries.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+        $validated = $request->validated();
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('products', 'public');
@@ -110,44 +78,11 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
         $product = Product::findOrFail($id);
 
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|integer|min:0',
-            'stock' => 'required|integer|min:0',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'lt' => 'required|integer|min:0',
-            'lb' => 'required|integer|min:0',
-            'flors' => 'required|integer|min:0',
-            'badroom' => 'required|integer|min:0',
-            'bathrom' => 'required|integer|min:0',
-            'garage' => 'required|integer|min:0',
-            'galeries' => [
-                'nullable',
-                'array',
-                'max:6',
-                function ($attribute, $value, $fail) use ($request) {
-                    $totalSize = 0;
-                    if ($request->hasFile('image')) {
-                        $totalSize += $request->file('image')->getSize();
-                    }
-                    if ($request->file('galeries')) {
-                        foreach ($request->file('galeries') as $file) {
-                            if ($file instanceof \Illuminate\Http\UploadedFile) {
-                                $totalSize += $file->getSize();
-                            }
-                        }
-                    }
-                    if ($totalSize > 5242880) {
-                        $fail('Total ukuran seluruh gambar (gambar utama & galeri) tidak boleh melebihi 5MB.');
-                    }
-                }
-            ],
-            'galeries.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+        $validated = $request->validated();
 
         if ($request->hasFile('image')) {
             if ($product->image) {
