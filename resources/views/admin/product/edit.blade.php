@@ -95,6 +95,7 @@
 
                             <label for="galeries" class="block text-sm font-medium text-gray-700">Tambah Gambar Galeri Baru (Bisa memilih lebih dari satu)</label>
                             <input type="file" name="galeries[]" id="galeries" multiple class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                            <p class="mt-1 text-xs text-gray-500">Maksimal tambahan input galeri adalah 6 gambar. Total keseluruhan ukuran berkas yang baru diupload maksimal 5MB.</p>
                         </div>
 
                         <!-- Tombol Batal & Simpan -->

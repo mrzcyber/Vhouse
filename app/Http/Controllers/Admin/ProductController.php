@@ -44,7 +44,25 @@ class ProductController extends Controller
             'badroom' => 'required|integer|min:0',
             'bathrom' => 'required|integer|min:0',
             'garage' => 'required|integer|min:0',
-            'galeries' => 'nullable|array',
+            'galeries' => [
+                'nullable',
+                'array',
+                'max:6',
+                function ($attribute, $value, $fail) use ($request) {
+                    $totalSize = 0;
+                    if ($request->hasFile('image')) {
+                        $totalSize += $request->file('image')->getSize();
+                    }
+                    if ($request->hasFile('galeries')) {
+                        foreach ($request->file('galeries') as $file) {
+                            $totalSize += $file->getSize();
+                        }
+                    }
+                    if ($totalSize > 5242880) {
+                        $fail('Total ukuran seluruh gambar (gambar utama & galeri) tidak boleh melebihi 5MB.');
+                    }
+                }
+            ],
             'galeries.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
@@ -103,7 +121,25 @@ class ProductController extends Controller
             'badroom' => 'required|integer|min:0',
             'bathrom' => 'required|integer|min:0',
             'garage' => 'required|integer|min:0',
-            'galeries' => 'nullable|array',
+            'galeries' => [
+                'nullable',
+                'array',
+                'max:6',
+                function ($attribute, $value, $fail) use ($request) {
+                    $totalSize = 0;
+                    if ($request->hasFile('image')) {
+                        $totalSize += $request->file('image')->getSize();
+                    }
+                    if ($request->hasFile('galeries')) {
+                        foreach ($request->file('galeries') as $file) {
+                            $totalSize += $file->getSize();
+                        }
+                    }
+                    if ($totalSize > 5242880) {
+                        $fail('Total ukuran seluruh gambar (gambar utama & galeri) tidak boleh melebihi 5MB.');
+                    }
+                }
+            ],
             'galeries.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
