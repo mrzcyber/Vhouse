@@ -53,9 +53,11 @@ class ProductController extends Controller
                     if ($request->hasFile('image')) {
                         $totalSize += $request->file('image')->getSize();
                     }
-                    if ($request->hasFile('galeries')) {
+                    if ($request->file('galeries')) {
                         foreach ($request->file('galeries') as $file) {
-                            $totalSize += $file->getSize();
+                            if ($file instanceof \Illuminate\Http\UploadedFile) {
+                                $totalSize += $file->getSize();
+                            }
                         }
                     }
                     if ($totalSize > 5242880) {
@@ -63,7 +65,7 @@ class ProductController extends Controller
                     }
                 }
             ],
-            'galeries.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'galeries.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         if ($request->hasFile('image')) {
@@ -73,12 +75,14 @@ class ProductController extends Controller
 
         $product = Product::create($validated);
 
-        if ($request->hasFile('galeries')) {
+        if ($request->file('galeries')) {
             foreach ($request->file('galeries') as $galeryImage) {
-                $galeryPath = $galeryImage->store('galeries', 'public');
-                $product->galeries()->create([
-                    'image' => $galeryPath
-                ]);
+                if ($galeryImage instanceof \Illuminate\Http\UploadedFile && $galeryImage->isValid()) {
+                    $galeryPath = $galeryImage->store('galeries', 'public');
+                    $product->galeries()->create([
+                        'image' => $galeryPath
+                    ]);
+                }
             }
         }
 
@@ -130,9 +134,11 @@ class ProductController extends Controller
                     if ($request->hasFile('image')) {
                         $totalSize += $request->file('image')->getSize();
                     }
-                    if ($request->hasFile('galeries')) {
+                    if ($request->file('galeries')) {
                         foreach ($request->file('galeries') as $file) {
-                            $totalSize += $file->getSize();
+                            if ($file instanceof \Illuminate\Http\UploadedFile) {
+                                $totalSize += $file->getSize();
+                            }
                         }
                     }
                     if ($totalSize > 5242880) {
@@ -140,7 +146,7 @@ class ProductController extends Controller
                     }
                 }
             ],
-            'galeries.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'galeries.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         if ($request->hasFile('image')) {
@@ -155,12 +161,14 @@ class ProductController extends Controller
 
         $product->update($validated);
 
-        if ($request->hasFile('galeries')) {
+        if ($request->file('galeries')) {
             foreach ($request->file('galeries') as $galeryImage) {
-                $galeryPath = $galeryImage->store('galeries', 'public');
-                $product->galeries()->create([
-                    'image' => $galeryPath
-                ]);
+                if ($galeryImage instanceof \Illuminate\Http\UploadedFile && $galeryImage->isValid()) {
+                    $galeryPath = $galeryImage->store('galeries', 'public');
+                    $product->galeries()->create([
+                        'image' => $galeryPath
+                    ]);
+                }
             }
         }
 
