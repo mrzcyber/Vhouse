@@ -53,6 +53,8 @@ class PropertyForm
                             ->directory('properties/gallery')
                             ->required(),
                     ])
+                    ->helperText('masukan 6 gambar')
+                    ->maxItems(6)
                     ->columnSpanFull(),
             ]);
     }
