@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 
 class PropertiesTable
@@ -16,6 +17,10 @@ class PropertiesTable
         return $table
             ->columns([
                 ImageColumn::make('thumbnail'),
+                IconColumn::make('status')
+                    ->label('Ready')
+                    ->boolean()
+                    ->sortable(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('price')

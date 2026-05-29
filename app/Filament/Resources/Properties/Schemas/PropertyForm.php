@@ -6,6 +6,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
 class PropertyForm
@@ -14,6 +15,11 @@ class PropertyForm
     {
         return $schema
             ->components([
+                Toggle::make('status')
+                    ->label('Ready')
+                    ->default(true)
+                    ->helperText('Tandai jika rumah ready/tersedia')
+                    ->required(),
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('lt')
