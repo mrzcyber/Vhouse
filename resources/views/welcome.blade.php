@@ -252,119 +252,51 @@
             {{-- Grid --}}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                {{-- Card 1 --}}
-                <div class="bg-white rounded-[20px] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.4)] overflow-hidden
-                            hover:shadow-[0px_8px_32px_0px_rgba(180,145,86,0.25)] transition-shadow duration-300">
-                    <div class="h-[220px] overflow-hidden rounded-[20px] m-4">
-                        <img src="/images/property-1.jpg" alt="Penta House" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="px-4 pb-4">
-                        <p class="text-[#b49156] text-[20px] font-semibold">Penta House</p>
-                        <div class="flex items-center gap-1 mt-1">
-                            <img src="/icons/location-icon-dark.svg" alt="Location" class="w-[15px] h-[15px]">
-                            <p class="text-[#4f4f4f] text-[13px]">Jakarta Selatan</p>
+                @forelse ($properties as $property)
+                    {{-- Card --}}
+                    <div class="bg-white rounded-[20px] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.4)] overflow-hidden
+                                hover:shadow-[0px_8px_32px_0px_rgba(180,145,86,0.25)] transition-shadow duration-300">
+                        <div class="h-[220px] overflow-hidden rounded-[20px] m-4">
+                            <img src="{{ $property->thumbnail ? Storage::url($property->thumbnail) : '/images/property-' . (($loop->index % 3) + 1) . '.jpg' }}" 
+                                 alt="{{ $property->name }}" 
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                         </div>
-                        <div class="border-t border-gray-100 mt-3 pt-3 flex items-center gap-4">
-                            <div class="flex items-center gap-1">
-                                <img src="/icons/bedroom.svg" alt="Bedroom" class="w-6 h-6">
-                                <span class="text-[#4f4f4f] text-[13px] font-medium">4 Beds</span>
+                        <div class="px-4 pb-4">
+                            <p class="text-[#b49156] text-[20px] font-semibold truncate">{{ $property->name }}</p>
+                            <div class="flex items-center gap-1 mt-1">
+                                <img src="/icons/location-icon-dark.svg" alt="Location" class="w-[15px] h-[15px]">
+                                <p class="text-[#4f4f4f] text-[13px]">Jakarta Selatan</p>
                             </div>
-                            <div class="flex items-center gap-1">
-                                <img src="/icons/bathtub.svg" alt="Bath" class="w-6 h-6">
-                                <span class="text-[#4f4f4f] text-[13px] font-medium">4 Baths</span>
+                            <div class="border-t border-gray-100 mt-3 pt-3 flex items-center gap-4">
+                                <div class="flex items-center gap-1">
+                                    <img src="/icons/bedroom.svg" alt="Bedroom" class="w-6 h-6">
+                                    <span class="text-[#4f4f4f] text-[13px] font-medium">{{ $property->bedrooms }} Beds</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <img src="/icons/bathtub.svg" alt="Bath" class="w-6 h-6">
+                                    <span class="text-[#4f4f4f] text-[13px] font-medium">{{ $property->bathrooms }} Baths</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <img src="/icons/carport.svg" alt="Carport" class="w-6 h-6">
+                                    <span class="text-[#4f4f4f] text-[13px] font-medium">{{ $property->carports }} Carport</span>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-1">
-                                <img src="/icons/carport.svg" alt="Carport" class="w-6 h-6">
-                                <span class="text-[#4f4f4f] text-[13px] font-medium">1 Carport</span>
+                            <div class="flex items-center justify-between mt-3">
+                                <p class="text-black text-[16px] font-medium">Rp {{ number_format($property->price, 0, ',', '.') }}</p>
+                                <a href="{{ route('properties.show', $property->slug) }}" class="flex items-center gap-1 text-[#b49156] text-[12px] font-semibold hover:gap-2 transition-all duration-200">
+                                    View Detail
+                                    <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                                        <path d="M3 8h10M9 4l4 4-4 4" stroke="#b49156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
                             </div>
-                        </div>
-                        <div class="flex items-center justify-between mt-3">
-                            <p class="text-black text-[16px] font-medium">Rp 5.000.000.000</p>
-                            <a href="#" class="flex items-center gap-1 text-[#b49156] text-[12px] font-semibold hover:gap-2 transition-all duration-200">
-                                View Detail
-                                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                                    <path d="M3 8h10M9 4l4 4-4 4" stroke="#b49156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Card 2 --}}
-                <div class="bg-white rounded-[20px] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.4)] overflow-hidden
-                            hover:shadow-[0px_8px_32px_0px_rgba(180,145,86,0.25)] transition-shadow duration-300">
-                    <div class="h-[220px] overflow-hidden rounded-[20px] m-4">
-                        <img src="/images/property-2.jpg" alt="Penta House" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="px-4 pb-4">
-                        <p class="text-[#b49156] text-[20px] font-semibold">Penta House</p>
-                        <div class="flex items-center gap-1 mt-1">
-                            <img src="/icons/location-icon-dark.svg" alt="Location" class="w-[15px] h-[15px]">
-                            <p class="text-[#4f4f4f] text-[13px]">Jakarta Selatan</p>
-                        </div>
-                        <div class="border-t border-gray-100 mt-3 pt-3 flex items-center gap-4">
-                            <div class="flex items-center gap-1">
-                                <img src="/icons/bedroom.svg" alt="Bedroom" class="w-6 h-6">
-                                <span class="text-[#4f4f4f] text-[13px] font-medium">4 Beds</span>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <img src="/icons/bathtub.svg" alt="Bath" class="w-6 h-6">
-                                <span class="text-[#4f4f4f] text-[13px] font-medium">4 Baths</span>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <img src="/icons/carport.svg" alt="Carport" class="w-6 h-6">
-                                <span class="text-[#4f4f4f] text-[13px] font-medium">1 Carport</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between mt-3">
-                            <p class="text-black text-[16px] font-medium">Rp 5.000.000.000</p>
-                            <a href="#" class="flex items-center gap-1 text-[#b49156] text-[12px] font-semibold hover:gap-2 transition-all duration-200">
-                                View Detail
-                                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                                    <path d="M3 8h10M9 4l4 4-4 4" stroke="#b49156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </a>
                         </div>
                     </div>
-                </div>
-
-                {{-- Card 3 --}}
-                <div class="bg-white rounded-[20px] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.4)] overflow-hidden
-                            hover:shadow-[0px_8px_32px_0px_rgba(180,145,86,0.25)] transition-shadow duration-300">
-                    <div class="h-[220px] overflow-hidden rounded-[20px] m-4">
-                        <img src="/images/property-3.jpg" alt="Penta House" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                @empty
+                    <div class="col-span-3 text-center py-10">
+                        <p class="text-white text-[18px]">No properties available at the moment.</p>
                     </div>
-                    <div class="px-4 pb-4">
-                        <p class="text-[#b49156] text-[20px] font-semibold">Penta House</p>
-                        <div class="flex items-center gap-1 mt-1">
-                            <img src="/icons/location-icon-dark.svg" alt="Location" class="w-[15px] h-[15px]">
-                            <p class="text-[#4f4f4f] text-[13px]">Jakarta Selatan</p>
-                        </div>
-                        <div class="border-t border-gray-100 mt-3 pt-3 flex items-center gap-4">
-                            <div class="flex items-center gap-1">
-                                <img src="/icons/bedroom.svg" alt="Bedroom" class="w-6 h-6">
-                                <span class="text-[#4f4f4f] text-[13px] font-medium">4 Beds</span>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <img src="/icons/bathtub.svg" alt="Bath" class="w-6 h-6">
-                                <span class="text-[#4f4f4f] text-[13px] font-medium">4 Baths</span>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <img src="/icons/carport.svg" alt="Carport" class="w-6 h-6">
-                                <span class="text-[#4f4f4f] text-[13px] font-medium">1 Carport</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between mt-3">
-                            <p class="text-black text-[16px] font-medium">Rp 5.000.000.000</p>
-                            <a href="#" class="flex items-center gap-1 text-[#b49156] text-[12px] font-semibold hover:gap-2 transition-all duration-200">
-                                View Detail
-                                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                                    <path d="M3 8h10M9 4l4 4-4 4" stroke="#b49156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
 
             </div>
 
