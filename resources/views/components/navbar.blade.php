@@ -2,7 +2,7 @@
      x-data="{ mobileOpen: false }"
      class="fixed top-0 left-0 right-0 z-50 transform transition-all duration-300 h-[77px] flex items-center bg-transparent translate-y-0">
 
-    <div class="w-full max-w-[1280px] mx-auto px-6 md:px-12 flex items-center justify-between">
+    <div class="w-full max-w-[1280px] mx-auto px-8  flex items-center justify-between">
 
         {{-- Logo --}}
         <a href="#" class="font-bold text-[26px] md:text-[30px] text-white leading-none tracking-tight font-serif">

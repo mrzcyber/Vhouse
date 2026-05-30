@@ -5,43 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Dynamic Title -->
-    <title>{{ $title ?? config('app.name', 'Vhouse') }}</title>
+    <title>{{ $title ?? 'VHouse - Premium & Luxury Real Estate' }}</title>
     
     <!-- SEO Meta Tags -->
-    @if(isset($description))
-        <meta name="description" content="{{ $description }}">
-    @endif
-    
-    @if(isset($keywords))
-        <meta name="keywords" content="{{ $keywords }}">
-    @endif
-
-    <meta name="author" content="{{ $author ?? config('app.name') }}">
-    <meta name="robots" content="{{ $robots ?? 'index, follow' }}">
+    <meta name="description" content="{{ $description ?? 'Discover premium residences crafted with elegance, comfort, and timeless design. Find your dream luxury house with VHouse.' }}">
+    <meta name="keywords" content="{{ $keywords ?? 'VHouse, luxury house, premium residences, real estate, luxury living, property agent' }}">
+    <meta name="author" content="VHouse">
+    <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="{{ $ogType ?? 'website' }}">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request()->url() }}">
-    <meta property="og:title" content="{{ $title ?? config('app.name', 'Vhouse') }}">
-    @if(isset($description))
-        <meta property="og:description" content="{{ $description }}">
-    @endif
-    @if(isset($ogImage))
-        <meta property="og:image" content="{{ $ogImage }}">
-    @endif
+    <meta property="og:title" content="{{ $title ?? 'VHouse - Premium & Luxury Real Estate' }}">
+    <meta property="og:description" content="{{ $description ?? 'Discover premium residences crafted with elegance, comfort, and timeless design. Find your dream luxury house with VHouse.' }}">
+    <meta property="og:image" content="{{ $ogImage ?? asset('images/hero-bg.png') }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request()->url() }}">
-    <meta property="twitter:title" content="{{ $title ?? config('app.name', 'Vhouse') }}">
-    @if(isset($description))
-        <meta property="twitter:description" content="{{ $description }}">
-    @endif
-    @if(isset($ogImage))
-        <meta property="twitter:image" content="{{ $ogImage }}">
-    @endif
+    <meta property="twitter:title" content="{{ $title ?? 'VHouse - Premium & Luxury Real Estate' }}">
+    <meta property="twitter:description" content="{{ $description ?? 'Discover premium residences crafted with elegance, comfort, and timeless design. Find your dream luxury house with VHouse.' }}">
+    <meta property="twitter:image" content="{{ $ogImage ?? asset('images/hero-bg.png') }}">
     
-    <!-- Optional: Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <!-- Fonts -->
