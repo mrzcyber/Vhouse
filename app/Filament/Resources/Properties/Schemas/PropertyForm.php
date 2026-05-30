@@ -21,7 +21,14 @@ class PropertyForm
                     ->helperText('Tandai jika rumah ready/tersedia')
                     ->required(),
                 TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
+                TextInput::make('slug')
+                    ->required()
+                    ->unique(\App\Models\Property::class, 'slug', ignoreRecord: true)
+                    ->disabled()
+                    ->dehydrated(),
                 TextInput::make('lt')
                     ->required()
                     ->numeric(),
