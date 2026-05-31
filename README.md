@@ -1,58 +1,111 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# VHouse - Premium & Luxury Real Estate Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+VHouse is a modern, luxury real estate landing page and property management application built with Laravel, Tailwind CSS, Alpine.js, and Filament. It offers an elegant user interface to showcase premium properties alongside a powerful admin panel for property listing management.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🌟 Key Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 💻 Client Side (Landing Page & Detail Page)
+*   **Luxury & Premium Design**: Clean dark and warm cream themes with elegant typography (Playfair Display & Poppins).
+*   **Animate On Scroll (AOS)**: Smooth entrance animations integrated globally across sections.
+*   **Modular Architecture**: Reusable Blade components for clean layouts (`x-navbar`, `x-footer`, `x-layout`).
+*   **Smooth Navigation**: Integrated page anchors for Home, Product (Properties), About, and Contact sections with smooth scrolling.
+*   **Interactive Property Gallery**: Lightbox Modal built with Alpine.js to view property photos in full-screen view (with escape-key and outside-click dismiss, and floating close button).
+*   **Direct Inquiry**: One-click WhatsApp link integrated with dynamic property information.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🛡️ Admin Panel (Filament)
+*   **Property Management**: Easily create, read, update, and delete premium properties.
+*   **Smart Slug Generation**: Automatic unique slug creation from the property name. If identical names exist, it auto-appends a progressive suffix (e.g., `-$index`) to ensure URL uniqueness.
+*   **Price Validation**: Hard limit validation rule to prevent inputting prices above Rp 20 Billion.
+*   **Public Storage Uploads**: Explicit public disk upload setup to ensure thumbnails and gallery images are served correctly in client views.
+*   **Streamlined UX**: Custom redirection after creation to bring the admin straight back to the properties index list instead of the edit view.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Technology Stack
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+*   **Framework**: Laravel 13.x
+*   **Administration**: Filament (v3)
+*   **Frontend Styles**: Tailwind CSS
+*   **Frontend Logic / Interactions**: Alpine.js
+*   **Scroll Animations**: Animate On Scroll (AOS) JS
+*   **Database**: MySQL / SQLite
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## 🚀 Installation & Setup
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Follow these steps to set up the project locally:
 
-```bash
-composer require laravel/boost --dev
+1.  **Clone the Repository**:
+    ```bash
+    git clone https://github.com/mrzcyber/Vhouse.git
+    cd Vhouse
+    ```
 
-php artisan boost:install
+2.  **Install PHP Dependencies**:
+    ```bash
+    composer install
+    ```
+
+3.  **Install Node Dependencies**:
+    ```bash
+    npm install
+    ```
+
+4.  **Environment Configuration**:
+    Copy the environment template:
+    ```bash
+    cp .env.example .env
+    ```
+    Configure your database credentials and set `FILESYSTEM_DISK=public` in `.env`.
+
+5.  **Generate App Key**:
+    ```bash
+    php artisan key:generate
+    ```
+
+6.  **Run Database Migrations & Seeders**:
+    ```bash
+    php artisan migrate --seed
+    ```
+
+7.  **Create Public Storage Symbolic Link**:
+    ```bash
+    php artisan storage:link
+    ```
+
+8.  **Compile Assets**:
+    ```bash
+    npm run build
+    ```
+
+9.  **Run Local Server**:
+    ```bash
+    php artisan serve
+    ```
+
+---
+
+## 📸 Core Modules Structure
+
+```
+├── app/
+│   ├── Filament/                  # Filament Admin resource definitions
+│   │   └── Resources/Properties/  # Properties form schemas and tables
+│   ├── Http/Controllers/          # Front-end Controllers (PropertyController)
+│   └── Models/                    # Eloquent Models (Property, PropertyImage)
+├── resources/
+│   ├── css/                       # Application stylesheet (app.css)
+│   ├── js/                        # Javascript with AOS initialization (app.js)
+│   └── views/                     # Blade views
+│       ├── components/            # Reusable components (layout, navbar, footer)
+│       └── properties/            # Property detail view (show.blade.php)
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 📄 License
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The VHouse platform is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
