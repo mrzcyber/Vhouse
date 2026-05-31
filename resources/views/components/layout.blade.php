@@ -52,7 +52,7 @@
         {{ $slot }}
     </main>
 
-    <!-- Footer bisa ditaruh di sini jika ada -->
+    <x-footer />
     
     <!-- Additional Scripts Stack -->
     @stack('scripts')

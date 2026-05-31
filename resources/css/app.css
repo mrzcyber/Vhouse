@@ -8,3 +8,8 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
     --font-serif: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 }
+
+
+*{
+    scroll-behavior: smooth;
+}

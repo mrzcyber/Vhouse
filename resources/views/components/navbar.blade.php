@@ -5,16 +5,16 @@
     <div class="w-full max-w-[1280px] mx-auto px-8  flex items-center justify-between">
 
         {{-- Logo --}}
-        <a href="#" class="font-bold text-[26px] md:text-[30px] text-white leading-none tracking-tight font-serif">
+        <a href="/" class="font-bold text-[26px] md:text-[30px] text-white leading-none tracking-tight font-serif">
             VHouse
         </a>
 
         {{-- Nav Links (Desktop) --}}
         <ul class="hidden md:flex items-center gap-10">
-            <li><a href="#" class="font-medium text-[15px] text-white">Home</a></li>
-            <li><a href="#" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">Product</a></li>
-            <li><a href="#" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">About</a></li>
-            <li><a href="#" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">Contact</a></li>
+            <li><a href="/" class="font-medium text-[15px] text-white">Home</a></li>
+            <li><a href="/#product" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">Product</a></li>
+            <li><a href="/#about" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">About</a></li>
+            <li><a href="/#contact" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">Contact</a></li>
         </ul>
 
         {{-- CTA Button --}}
@@ -55,10 +55,10 @@
          x-transition:leave-end="opacity-0 -translate-y-2"
          class="absolute top-[77px] left-0 right-0 md:hidden bg-black/95 backdrop-blur-md border-b border-white/10">
         <ul class="flex flex-col px-6 py-6 gap-5">
-            <li><a href="#" class="font-medium text-[15px] text-white">Home</a></li>
-            <li><a href="#" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">Product</a></li>
-            <li><a href="#" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">About</a></li>
-            <li><a href="#" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">Contact</a></li>
+            <li><a href="/" class="font-medium text-[15px] text-white">Home</a></li>
+            <li><a href="/#product" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">Product</a></li>
+            <li><a href="/#about" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">About</a></li>
+            <li><a href="/#contact" class="font-medium text-[15px] text-[#898989] hover:text-white transition-colors duration-200">Contact</a></li>
             <li class="pt-2">
                 <a href="#"
                    class="inline-flex items-center justify-center h-[36px] px-5 rounded-[20px]

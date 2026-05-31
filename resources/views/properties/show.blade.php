@@ -16,12 +16,15 @@
         </div>
 
         <div class="relative z-10 max-w-[1280px] w-full mx-auto px-6 md:px-[150px] text-center lg:text-left mt-16">
-            <p class="text-[#b49156] text-[14px] sm:text-[16px] font-semibold tracking-widest uppercase">Property Details</p>
+            <p class="text-[#b49156] text-[14px] sm:text-[16px] font-semibold tracking-widest uppercase"
+               data-aos="fade-down" data-aos-duration="800">Property Details</p>
             <h1 class="text-[36px] sm:text-[50px] lg:text-[64px] text-white font-bold leading-tight mt-2" 
-                style="font-family: 'Playfair Display', serif;">
+                style="font-family: 'Playfair Display', serif;"
+                data-aos="fade-up" data-aos-duration="1000">
                 {{ $property->name }}
             </h1>
-            <div class="flex items-center justify-center lg:justify-start gap-2 mt-4 text-white/80">
+            <div class="flex items-center justify-center lg:justify-start gap-2 mt-4 text-white/80"
+                 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                 <img src="/icons/location-icon.svg" alt="Location" class="w-[20px] h-[20px] filter brightness-0 invert">
                 <span class="text-[14px] sm:text-[16px]">Jakarta Selatan, Indonesia</span>
             </div>
@@ -29,20 +32,22 @@
     </section>
 
     {{-- Main Content Section --}}
-    <section class="w-full py-16 px-6 md:px-[150px] bg-[#faf6f0]">
+    <section class="w-full py-16 px-6 md:px-[150px] bg-[#faf6f0] overflow-hidden">
         <div class="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
             
             {{-- Left Side: Details & Gallery --}}
             <div class="flex-grow w-full lg:w-0">
                 {{-- Main Image --}}
-                <div class="w-full h-[300px] sm:h-[450px] lg:h-[500px] rounded-[30px] overflow-hidden shadow-lg bg-white mb-10">
+                <div class="w-full h-[300px] sm:h-[450px] lg:h-[500px] rounded-[30px] overflow-hidden shadow-lg bg-white mb-10"
+                     data-aos="fade-up" data-aos-duration="1000">
                     <img src="{{ $property->thumbnail ? Storage::url($property->thumbnail) : '/images/property-1.jpg' }}" 
                          alt="{{ $property->name }}" 
                          class="w-full h-full object-cover">
                 </div>
 
                 {{-- Description --}}
-                <div class="bg-white rounded-[30px] p-6 sm:p-10 shadow-[0px_4px_20px_rgba(0,0,0,0.05)] mb-10">
+                <div class="bg-white rounded-[30px] p-6 sm:p-10 shadow-[0px_4px_20px_rgba(0,0,0,0.05)] mb-10"
+                     data-aos="fade-up" data-aos-duration="1000">
                     <h3 class="text-[#b49156] text-[20px] font-bold mb-4" style="font-family: 'Playfair Display', serif;">
                         Description
                     </h3>
@@ -54,7 +59,8 @@
 
                 {{-- Gallery --}}
                 @if($property->images && $property->images->count() > 0)
-                    <div class="bg-white rounded-[30px] p-6 sm:p-10 shadow-[0px_4px_20px_rgba(0,0,0,0.05)]">
+                    <div x-data="{ isOpen: false, activeImage: '' }" class="bg-white rounded-[30px] p-6 sm:p-10 shadow-[0px_4px_20px_rgba(0,0,0,0.05)]"
+                         data-aos="fade-up" data-aos-duration="1000">
                         <h3 class="text-[#b49156] text-[20px] font-bold mb-4" style="font-family: 'Playfair Display', serif;">
                             Property Gallery
                         </h3>
@@ -62,12 +68,51 @@
                         
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
                             @foreach($property->images as $gallery)
-                                <div class="h-[120px] sm:h-[180px] rounded-[20px] overflow-hidden group cursor-pointer shadow-sm">
-                                    <img src="{{ Str::contains($gallery->image, 'dummy') ? '/images/property-' . (($loop->index % 3) + 1) . '.jpg' : Storage::url($gallery->image) }}" 
+                                @php
+                                    $imagePath = Str::contains($gallery->image, 'dummy') ? '/images/property-' . (($loop->index % 3) + 1) . '.jpg' : Storage::url($gallery->image);
+                                @endphp
+                                <div class="h-[120px] sm:h-[180px] rounded-[20px] overflow-hidden group cursor-pointer shadow-sm"
+                                     data-aos="fade-up" data-aos-duration="800" data-aos-delay="{{ ($loop->index % 3) * 100 }}"
+                                     @click="isOpen = true; activeImage = '{{ $imagePath }}'">
+                                    <img src="{{ $imagePath }}" 
                                          alt="Gallery Image" 
                                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                 </div>
                             @endforeach
+                        </div>
+
+                        <!-- Lightbox Modal -->
+                        <div x-show="isOpen" 
+                             x-transition:enter="transition ease-out duration-300"
+                             x-transition:enter-start="opacity-0"
+                             x-transition:enter-end="opacity-100"
+                             x-transition:leave="transition ease-in duration-200"
+                             x-transition:leave-start="opacity-100"
+                             x-transition:leave-end="opacity-0"
+                             class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 md:p-10"
+                             style="display: none;"
+                             @keydown.escape.window="isOpen = false">
+                            
+                            <!-- Backdrop Click Area -->
+                            <div class="absolute inset-0 cursor-zoom-out" @click="isOpen = false"></div>
+                            
+                            <!-- Close Button (Floating Top Right) -->
+                            <button @click="isOpen = false" 
+                                    class="absolute top-6 right-6 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-[#b49156] transition-all duration-200 focus:outline-none cursor-pointer">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+                            
+                            <div class="relative max-w-5xl max-h-[85vh] md:max-h-[90vh] z-10 flex items-center justify-center pointer-events-none">
+                                <img :src="activeImage" 
+                                     alt="Full Size Gallery Image" 
+                                     class="max-w-full max-h-[80vh] md:max-h-[90vh] rounded-lg shadow-2xl object-contain transition-transform duration-300 pointer-events-auto"
+                                     x-show="isOpen"
+                                     x-transition:enter="transition ease-out duration-300 transform scale-95"
+                                     x-transition:enter-start="scale-95"
+                                     x-transition:enter-end="scale-100">
+                            </div>
                         </div>
                     </div>
                 @endif
@@ -76,7 +121,8 @@
             {{-- Right Side: Quick Specs & Inquiry Card --}}
             <div class="w-full lg:w-[400px] flex-shrink-0">
                 {{-- Price & Specs Card --}}
-                <div class="bg-white rounded-[30px] p-8 shadow-[0px_8px_30px_rgba(0,0,0,0.08)] mb-8 border border-gray-100">
+                <div class="bg-white rounded-[30px] p-8 shadow-[0px_8px_30px_rgba(0,0,0,0.08)] mb-8 border border-gray-100"
+                     data-aos="fade-left" data-aos-duration="1000">
                     <div class="mb-6">
                         <p class="text-[#898989] text-[13px] font-medium tracking-wider uppercase">Asking Price</p>
                         <h2 class="text-black text-[28px] sm:text-[36px] font-bold mt-1">
@@ -130,7 +176,8 @@
                 </div>
 
                 {{-- Contact Agent Card --}}
-                <div class="bg-[#1a1a1a] rounded-[30px] p-8 shadow-[0px_8px_30px_rgba(0,0,0,0.15)] text-white text-center">
+                <div class="bg-[#1a1a1a] rounded-[30px] p-8 shadow-[0px_8px_30px_rgba(0,0,0,0.15)] text-white text-center"
+                     data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <p class="text-[#b49156] text-[13px] font-bold tracking-wider uppercase mb-2">Interested in this property?</p>
                     <h3 class="text-white text-[24px] font-medium leading-snug mb-6" style="font-family: 'Playfair Display', serif;">
                         Schedule a Private Viewing
