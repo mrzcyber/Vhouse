@@ -12,7 +12,7 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::latest()->get();
+        $properties = Property::where('price', '<=', 20000000000)->latest()->get();
         return view('welcome', compact('properties'));
     }
 

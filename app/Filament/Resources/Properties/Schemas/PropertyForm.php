@@ -23,7 +23,20 @@ class PropertyForm
                 TextInput::make('name')
                     ->required()
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
+                    ->afterStateUpdated(function ($state, callable $set, ?\App\Models\Property $record) {
+                        $slug = \Illuminate\Support\Str::slug($state);
+                        $originalSlug = $slug;
+                        $count = 1;
+                        
+                        while (\App\Models\Property::where('slug', $slug)
+                            ->when($record, fn ($q) => $q->where('id', '!=', $record->id))
+                            ->exists()) {
+                            $slug = $originalSlug . '-' . $count;
+                            $count++;
+                        }
+                        
+                        $set('slug', $slug);
+                    }),
                 TextInput::make('slug')
                     ->required()
                     ->unique(\App\Models\Property::class, 'slug', ignoreRecord: true)
@@ -50,12 +63,14 @@ class PropertyForm
                 TextInput::make('price')
                     ->required()
                     ->numeric()
-                    ->prefix('Rp'),
+                    ->prefix('Rp')
+                    ->maxValue(20000000000),
                 Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
                 FileUpload::make('thumbnail')
                     ->image()
+                    ->disk('public')
                     ->directory('properties')
                     ->required(),
                 Repeater::make('images')
@@ -63,6 +78,7 @@ class PropertyForm
                     ->schema([
                         FileUpload::make('image')
                             ->image()
+                            ->disk('public')
                             ->directory('properties/gallery')
                             ->required(),
                     ])

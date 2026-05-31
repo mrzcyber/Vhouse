@@ -18,7 +18,8 @@
         </div>
 
         {{-- Konten Kiri --}}
-        <div class="relative lg:absolute lg:left-[50px] lg:top-0 lg:h-full flex flex-col justify-center z-10 pt-12 lg:pt-0 max-w-full">
+        <div class="relative lg:absolute lg:left-[50px] lg:top-0 lg:h-full flex flex-col justify-center z-10 pt-12 lg:pt-0 max-w-full"
+             data-aos="fade-right" data-aos-duration="1000">
 
             <p class="text-[#b49156] text-[32px] sm:text-[40px] lg:text-[50px] font-semibold leading-none mt-[50px] lg:mt-[100px]">
                 Residence
@@ -89,7 +90,8 @@
 
         </div>        {{-- Featured Property Card --}}
         <div class="hidden lg:flex lg:absolute lg:bottom-[30px] lg:right-[38px] w-[579px] h-[196px]
-                    bg-[rgba(9,9,9,0.75)] rounded-[30px] items-center overflow-hidden z-10">
+                    bg-[rgba(9,9,9,0.75)] rounded-[30px] items-center overflow-hidden z-10"
+             data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
             <div class="relative flex-shrink-0 w-[207px] h-[172px] rounded-[20px] overflow-hidden ml-[13px]">
                 <img src="/images/featured-property.jpg"
                      alt="Modern Elegance House"
@@ -137,11 +139,12 @@
     {{-- ============================================================ --}}
     {{-- WHY CHOOSE VHOUSE — warm cream background                    --}}
     {{-- ============================================================ --}}
-    <section id="about" class="w-full py-20 px-6 sm:px-[38px]" style="background-color: #faf6f0;">
+    <section id="about" class="w-full py-20 px-6 sm:px-[38px] overflow-hidden" style="background-color: #faf6f0;">
         <div class="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-28 items-center lg:items-start">
 
             {{-- Foto Kiri --}}
-            <div class="hidden lg:block relative flex-shrink-0 w-[602px]">
+            <div class="hidden lg:block relative flex-shrink-0 w-[602px]"
+                 data-aos="fade-right" data-aos-duration="1000">
                 <div class="w-full h-[350px] sm:h-[523px] rounded-[30px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(0,0,0,0.15)]">
                     <img src="/images/interior.jpg"
                          alt="Interior"
@@ -168,10 +171,11 @@
 
             {{-- Konten Kanan --}}
             <div class="flex-1 pt-2 w-full">
-                <h2 class="text-[#4f4f4f] text-[28px] sm:text-[35px] font-bold mb-8">Why Choose Vhouse?</h2>
+                <h2 class="text-[#4f4f4f] text-[28px] sm:text-[35px] font-bold mb-8"
+                    data-aos="fade-left" data-aos-duration="800">Why Choose Vhouse?</h2>
 
                 {{-- Item 1 --}}
-                <div class="flex gap-4 items-start py-5">
+                <div class="flex gap-4 items-start py-5" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
                     <div class="flex-shrink-0 w-[50px] h-[50px] rounded-full bg-[#b49156] flex items-center justify-center">
                         <span class="text-white text-[26px] font-medium leading-none">1</span>
                     </div>
@@ -183,7 +187,7 @@
                 <div class="h-px w-full max-w-[429px] ml-[66px]" style="background-color: #e0d5c5;"></div>
 
                 {{-- Item 2 --}}
-                <div class="flex gap-4 items-start py-5">
+                <div class="flex gap-4 items-start py-5" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                     <div class="flex-shrink-0 w-[50px] h-[50px] rounded-full bg-[#b49156] flex items-center justify-center">
                         <span class="text-white text-[26px] font-medium leading-none">2</span>
                     </div>
@@ -195,7 +199,7 @@
                 <div class="h-px w-full max-w-[429px] ml-[66px]" style="background-color: #e0d5c5;"></div>
 
                 {{-- Item 3 --}}
-                <div class="flex gap-4 items-start py-5">
+                <div class="flex gap-4 items-start py-5" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
                     <div class="flex-shrink-0 w-[50px] h-[50px] rounded-full bg-[#b49156] flex items-center justify-center">
                         <span class="text-white text-[26px] font-medium leading-none">3</span>
                     </div>
@@ -207,7 +211,7 @@
                 <div class="h-px w-full max-w-[429px] ml-[66px]" style="background-color: #e0d5c5;"></div>
 
                 {{-- Item 4 --}}
-                <div class="flex gap-4 items-start py-5">
+                <div class="flex gap-4 items-start py-5" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400">
                     <div class="flex-shrink-0 w-[50px] h-[50px] rounded-full bg-[#b49156] flex items-center justify-center">
                         <span class="text-white text-[26px] font-medium leading-none">4</span>
                     </div>
@@ -219,7 +223,7 @@
                 <div class="h-px w-full max-w-[429px] ml-[66px]" style="background-color: #e0d5c5;"></div>
 
                 {{-- Item 5 --}}
-                <div class="flex gap-4 items-start py-5">
+                <div class="flex gap-4 items-start py-5" data-aos="fade-left" data-aos-duration="800" data-aos-delay="500">
                     <div class="flex-shrink-0 w-[50px] h-[50px] rounded-full bg-[#b49156] flex items-center justify-center">
                         <span class="text-white text-[26px] font-medium leading-none">5</span>
                     </div>
@@ -237,15 +241,17 @@
     {{-- ============================================================ --}}
     {{-- EXCLUSIVE PROPERTIES — dark background                       --}}
     {{-- ============================================================ --}}
-    <section id="product" class="w-full py-16 px-6 sm:px-[38px]" style="background-color: #1a1a1a;">
+    <section id="product" class="w-full py-16 px-6 sm:px-[38px] overflow-hidden" style="background-color: #1a1a1a;">
         <div class="max-w-[1280px] mx-auto">
 
-            <h2 class="text-[32px] sm:text-[42px] lg:text-[50px] font-bold text-center leading-tight">
+            <h2 class="text-[32px] sm:text-[42px] lg:text-[50px] font-bold text-center leading-tight"
+                data-aos="fade-up" data-aos-duration="1000">
                 <span class="text-white">Exclusive </span>
                 <span class="text-[#df9b28]">Properties </span>
                 <span class="text-white">You I'll Love</span>
             </h2>
-            <p class="text-center text-[#898989] text-[16px] sm:text-[20px] font-normal mt-3 mb-12">
+            <p class="text-center text-[#898989] text-[16px] sm:text-[20px] font-normal mt-3 mb-12"
+               data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                 Carefully selected homes that match your lifestyle, taste and dreams
             </p>
 
@@ -255,7 +261,8 @@
                 @forelse ($properties as $property)
                     {{-- Card --}}
                     <div class="bg-white rounded-[20px] shadow-[0px_4px_24px_0px_rgba(0,0,0,0.4)] overflow-hidden
-                                hover:shadow-[0px_8px_32px_0px_rgba(180,145,86,0.25)] transition-shadow duration-300">
+                                hover:shadow-[0px_8px_32px_0px_rgba(180,145,86,0.25)] transition-shadow duration-300"
+                         data-aos="fade-up" data-aos-duration="1000" data-aos-delay="{{ ($loop->index % 3) * 150 }}">
                         <div class="h-[220px] overflow-hidden rounded-[20px] m-4">
                             <img src="{{ $property->thumbnail ? Storage::url($property->thumbnail) : '/images/property-' . (($loop->index % 3) + 1) . '.jpg' }}" 
                                  alt="{{ $property->name }}" 
@@ -300,127 +307,9 @@
 
             </div>
 
-            {{-- See More --}}
-            <div class="flex justify-center mt-10">
-                <a href="#" class="flex items-center gap-2 text-white text-[20px] font-medium
-                                   hover:text-[#b49156] transition-colors duration-200">
-                    See More
-                    <svg class="w-5 h-5" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
 
         </div>
     </section>
 
-
-    {{-- ============================================================ --}}
-    {{-- CTA + FOOTER SECTION — dark background                       --}}
-    {{-- ============================================================ --}}
-    <footer id="contact" style="background-color: #0d0d0d;">
-
-        {{-- CTA Area --}}
-        <div class="max-w-[1280px] mx-auto px-6 md:px-16 pt-20 pb-16 flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16">
-
-            {{-- Kiri: Text + Button --}}
-            <div class="flex-1 w-full text-center lg:text-left">
-                <h2 class="text-white font-bold leading-[1.15] text-[32px] sm:text-[44px] lg:text-[56px]">
-                    Engage with Us in<br class="hidden sm:inline">Conversation.
-                </h2>
-
-                <div class="w-[60px] h-[3px] bg-[#b49156] mt-7 mb-6 mx-auto lg:mx-0"></div>
-
-                <p class="text-[#9a9a9a] text-[14px] leading-[24px] max-w-[430px] mx-auto lg:mx-0">
-                    In a global world based on communication, a brand must look beyond its borders,
-                    open up to new experiences, and dare to be different. Meeting the brightest
-                    minds of one's time is the most effective way to nurture creativity.
-                </p>
-
-                <a href="#"
-                   class="inline-flex items-center gap-2 mt-8 h-[44px] px-8 rounded-[22px]
-                          bg-[#b49156] text-white text-[14px] font-medium
-                          hover:bg-[#c9a46a] transition-colors duration-200">
-                    Contact Us
-                    <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-
-            {{-- Kanan: Interior Photo --}}
-            <div class="w-full lg:w-[520px] max-w-[520px] h-[250px] sm:h-[340px] rounded-[20px] overflow-hidden
-                        shadow-[0px_8px_40px_0px_rgba(0,0,0,0.5)]">
-                <img src="/images/cta-bg.jpg"
-                     alt="Interior"
-                     class="w-full h-full object-cover">
-            </div>
-
-        </div>
-
-        {{-- Divider --}}
-        <div class="max-w-[1280px] mx-auto px-6 md:px-16">
-            <div class="h-px bg-white/10"></div>
-        </div>
-
-        {{-- Footer Links --}}
-        <div class="max-w-[1280px] mx-auto px-6 md:px-16 py-14 grid grid-cols-2 md:grid-cols-4 gap-8">
-
-            {{-- About --}}
-            <div>
-                <p class="text-white text-[16px] font-bold mb-5">About</p>
-                <ul class="flex flex-col gap-3">
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Our Story</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Store Locator</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Sustainability</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Careers</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Contact</a></li>
-                </ul>
-            </div>
-
-            {{-- Customer Service --}}
-            <div>
-                <p class="text-white text-[16px] font-bold mb-5">Customer Service</p>
-                <ul class="flex flex-col gap-3">
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Prices and Payments</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Shipping</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Return Policy</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Terms of Service</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Privacy Policy</a></li>
-                </ul>
-            </div>
-
-            {{-- Social Media --}}
-            <div>
-                <p class="text-white text-[16px] font-bold mb-5">Social Media</p>
-                <ul class="flex flex-col gap-3">
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Instagram</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">Facebook</a></li>
-                    <li><a href="#" class="text-[#6b6b6b] text-[13px] hover:text-[#b49156] transition-colors duration-200">LinkedIn</a></li>
-                </ul>
-            </div>
-
-            {{-- Brand Logo --}}
-            <div class="col-span-2 md:col-span-1 flex md:items-end md:justify-end justify-start pt-6 md:pt-0">
-                <p class="text-white font-bold" style="font-size: 48px; line-height: 1;">VHouse</p>
-            </div>
-
-        </div>
-
-        {{-- Bottom Bar --}}
-        <div class="border-t border-white/[0.06]">
-            <div class="max-w-[1280px] mx-auto px-6 md:px-16 py-5 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 text-center md:text-left">
-                <p class="text-[#454545] text-[12px]">© 2025 VHouse. All rights reserved.</p>
-                <div class="flex items-center gap-6">
-                    <a href="#" class="text-[#454545] text-[12px] hover:text-[#b49156] transition-colors duration-200">Privacy Policy</a>
-                    <span class="text-[#454545]">·</span>
-                    <a href="#" class="text-[#454545] text-[12px] hover:text-[#b49156] transition-colors duration-200">Terms of Use</a>
-                </div>
-            </div>
-        </div>
-
-    </footer>
 
 </x-layout>
