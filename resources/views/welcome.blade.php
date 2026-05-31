@@ -3,7 +3,7 @@
     {{-- ============================================================ --}}
     {{-- HERO SECTION                                                  --}}
     {{-- ============================================================ --}}
-    <section class="relative w-full min-h-[832px] lg:h-[832px] overflow-hidden flex flex-col justify-between py-24 px-8 lg:px-[150px]">
+    <section  class="relative w-full min-h-[832px] lg:h-[832px] overflow-hidden flex flex-col justify-between py-24 px-8 lg:px-[150px]">
 
         {{-- Background Image --}}
         <div class="absolute inset-0 z-0">
@@ -137,7 +137,7 @@
     {{-- ============================================================ --}}
     {{-- WHY CHOOSE VHOUSE — warm cream background                    --}}
     {{-- ============================================================ --}}
-    <section class="w-full py-20 px-6 sm:px-[38px]" style="background-color: #faf6f0;">
+    <section id="about" class="w-full py-20 px-6 sm:px-[38px]" style="background-color: #faf6f0;">
         <div class="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-28 items-center lg:items-start">
 
             {{-- Foto Kiri --}}
@@ -237,7 +237,7 @@
     {{-- ============================================================ --}}
     {{-- EXCLUSIVE PROPERTIES — dark background                       --}}
     {{-- ============================================================ --}}
-    <section class="w-full py-16 px-6 sm:px-[38px]" style="background-color: #1a1a1a;">
+    <section id="product" class="w-full py-16 px-6 sm:px-[38px]" style="background-color: #1a1a1a;">
         <div class="max-w-[1280px] mx-auto">
 
             <h2 class="text-[32px] sm:text-[42px] lg:text-[50px] font-bold text-center leading-tight">
@@ -319,7 +319,7 @@
     {{-- ============================================================ --}}
     {{-- CTA + FOOTER SECTION — dark background                       --}}
     {{-- ============================================================ --}}
-    <footer style="background-color: #0d0d0d;">
+    <footer id="contact" style="background-color: #0d0d0d;">
 
         {{-- CTA Area --}}
         <div class="max-w-[1280px] mx-auto px-6 md:px-16 pt-20 pb-16 flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16">
